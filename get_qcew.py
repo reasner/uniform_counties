@@ -91,6 +91,7 @@ for year in range(1983,2010):
     fips_wide_df[var_label] = fips_wide_df[var_label].fillna(0)
 
 fips_wide_df['num_years_observed'] = fips_wide_df.sum(axis=1)
+fips_wide_df = fips_wide_df.sort_values(by=['fips'])
 vis_years_path = os.path.join(cd,r'uniform_counties',r'vis_years.csv')
 fips_wide_df.to_csv(vis_years_path,index=False)
 
