@@ -4,6 +4,9 @@ import os
 import shutil
 import zipfile
 import pandas as pd
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
 
 # SETUP
 cd = os.path.join(os.path.expanduser("~"),r'Projects')
@@ -170,13 +173,39 @@ new_fips_summed.to_csv(panel_path,float_format='%.f')
 
 # MAPPING EXAMPLE
 ## calculate average size of establishments by county by year
-new_fips_summed['avg_size_estab'] = round(new_fips_summed['emp']/new_fips_summed['estab'],0)
+new_fips_summed['avg_size_estabs'] = round(new_fips_summed['emp']/new_fips_summed['estabs'],0)
 ## map average size of establishments
+###setup map
+shapefile_path = os.path.join(cd,r'uniform_counties',r'gz_2010_us_050_00_500k',r'gz_2010_us_050_00_500k.shp')
+county_map = gpd.read_file(shapefile_path)
+county_map = county_map[(county_map['STATE'] != '02') & (county_map['STATE'] != '15') & (county_map['STATE'] != '72')]
+projection = "+proj=laea +lat_0=30 +lon_0=-95"
+fig, ax = plt.subplots(1, figsize=(8.5,6.5))
+ax.axis('off')
+'''
+cmap = mpl.colors.LinearSegmentedColormap.from_list('Custom cmap', ["steelblue", "white", "tomato"])
+'''
+cmap = plt.get_cmap('plasma')
+###join economic data
+county_map['fips'] = county_map['STATE'] + county_map['COUNTY']
+new_fips_2000_df = new_fips_summed.iloc[new_fips_summed.index.get_level_values('year') == '2000']
+county_econ_df = pd.merge(county_map, new_fips_2000_df, on='fips', how='inner')
+county_econ_df = county_econ_df.to_crs(projection)
+county_econ_df[['avg_size_estabs']] = county_econ_df[['avg_size_estabs']].apply(pd.to_numeric)
+county_econ_df.plot(ax=ax, column='avg_size_estabs', legend=True, legend_kwds={'loc':'lower left'}, scheme='quantiles', linewidth=0.3, edgecolor='gray', cmap=cmap)
+plt.title('Average Establishment Size (2000)')
+first_plot_path = os.path.join(cd,r'uniform_counties','first_plot.png')
+plt.savefig(first_plot_path,bbox_inches='tight',dpi=300)
+
 
 ## use mapping again to fill in map
+new_fips_2000_df.index.names = ['year','new_fips']
+fips_df = fips_df.set_index(['year', 'new_fips'])
+filled_in_df = pd.merge(new_fips_2000_df,fips_df,on=['year','new_fips'],how='inner')
+filled_in_map_df = pd.merge(county_map,filled_in_df,on='fips',how='inner')
+filled_in_map_df = filled_in_map_df.to_crs(projection)
+filled_in_map_df.plot(ax=ax, column='avg_size_estabs', legend=True, legend_kwds={'loc':'lower left'}, scheme='quantiles', linewidth=0.3, edgecolor='gray', cmap=cmap)
+plt.title('Average Establishment Size (2000)')
+second_plot_path = os.path.join(cd,r'uniform_counties','second_plot.png')
+plt.savefig(second_plot_path,bbox_inches='tight',dpi=300)
 
-
-
-
-#with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-#    print(new_fips_df)
