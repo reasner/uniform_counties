@@ -49,11 +49,11 @@ Some additional tweaks become clear when making the changes outlined above and l
 ## Mapping example
 While it is easy to add additional data to the panel once the crosswalk is made (just apply the crosswalk to the new data before merging), it is not quite as simple to combine the data with most map-making solutions. Say we want to use the data in our panel with consistent FIPS codes on the number of establishments and workers in each county in each year to calculate and then plot the average size (in terms of the number of employees) of establishments. It is simple to calculate this value for each county and then merge the data by FIPS codes with the [2010 county shapefile from the Census](https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.2010.html). While some changes to the FIPS codes will not be an issue for this mapping (e.g. Dade County, FL (12025) to Miami-Dade County, FL (12086)), any change that combines counties will cause an issue:
 
-![naive plot](first_plot.png)
+![naive plot](naive_plot.png)
 
 The flaw in this naive approach to mapping the data is most apparent in Colorado: the average number of establishments for the new "Denver" county, which was necessitated due to the creation of Bloomfield County as well as some other territory exchanges, has only applied to the area of the actual Denver County, CO (08031)! However, because this observation in the data actually represents multiple counties, the average size of establishments in the new "Denver" county should be applied to the entire area. While it is possible to redefine the shapefile for this adjustment with software like (ArcGIS), this simplest solution is to simply apply the crosswalk in reverse once the appropriate calculations have been performed on the data, which results in the only missing values remaining on the map being the consequence of counties with zero reported workers in 2000:
 
-![better plot](second_plot.png)
+![better plot](better_plot.png)
 
 Much better to my eye!
 
