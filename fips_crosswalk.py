@@ -194,8 +194,8 @@ county_econ_df = county_econ_df.to_crs(projection)
 county_econ_df[['avg_size_estabs']] = county_econ_df[['avg_size_estabs']].apply(pd.to_numeric)
 county_econ_df.plot(ax=ax, column='avg_size_estabs', legend=True, legend_kwds={'loc':'lower left'}, scheme='quantiles', linewidth=0.3, edgecolor='gray', cmap=cmap)
 plt.title('Average Establishment Size (2000)')
-first_plot_path = os.path.join(cd,r'uniform_counties','first_plot.png')
-plt.savefig(first_plot_path,bbox_inches='tight',dpi=300)
+naive_plot_path = os.path.join(cd,r'uniform_counties','naive_plot.png')
+plt.savefig(naive_plot_path,bbox_inches='tight',dpi=300)
 
 
 ## use mapping again to fill in map
@@ -206,6 +206,6 @@ filled_in_map_df = pd.merge(county_map,filled_in_df,on='fips',how='inner')
 filled_in_map_df = filled_in_map_df.to_crs(projection)
 filled_in_map_df.plot(ax=ax, column='avg_size_estabs', legend=True, legend_kwds={'loc':'lower left'}, scheme='quantiles', linewidth=0.3, edgecolor='gray', cmap=cmap)
 plt.title('Average Establishment Size (2000)')
-second_plot_path = os.path.join(cd,r'uniform_counties','second_plot.png')
-plt.savefig(second_plot_path,bbox_inches='tight',dpi=300)
+better_plot_path = os.path.join(cd,r'uniform_counties','better_plot.png')
+plt.savefig(better_plot_path,bbox_inches='tight',dpi=300)
 
