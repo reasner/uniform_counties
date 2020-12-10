@@ -58,15 +58,59 @@ The flaw in this naive approach to mapping the data is most apparent in Colorado
 Much better to my eye!
 
 ## List of all changes for FIPS crosswalk
+| Original FIPS | County | New FIPS | County | Desc |
+| :---: | :---: | :---: | :---: | :---: |
+| 08001 | Adams County, CO | 08031 | Denver County, CO |  | 
+| 08013 | Boulder County, CO | 08031 | Denver County, CO |  | 
+| 08014 | Broomfield County, CO | 08031 | Denver County, CO |  | 
+| 08059 | Jefferson County, CO | 08031 | Denver County, CO |  | 
+| 08123 | Weld County, CO | 08031 | Denver County, CO |  | 
+| 12025 | Dade County, FL | 12086 | Miami-Dade County, FL | name change | 
+| 24510 | Baltimore City, MD | 24005 | Baltimore County, MD | merge city with surrounding county | 
+| 29510 | St Louis City, MO | 29189 | St Louis County, MO |  | 
+| 31115 | Loup County, NE | 31071 | Garfield County, NE | combine county that is too small for wage/emp. data (pop. of 632 in 2010 Census) with neighboring county | 
+| 31117 | McPherson County, NE | 31113 | Logan County,NE | combine county that is too small for wage/emp. data (pop. of 539 in 2010 Census) with neighboring county | 
+| 48033 | Borden County, TX | 48415 | Scurry County, TX | combine county that is too small for wage/emp. data (pop. of 641 in 2010 Census) with neighboring county | 
+| 48301 | Loving County, TX | 48389 | Reeves County, TX | combine county that is too small for wage/emp. data (pop. of 169  in 2010 Census) with neighboring county | 
+| 51510 | Alexandria City, VA | 51059 | Fairfax County, VA | merge city with surrounding county | 
+| 51515 | Bedford City, VA | 51019 | Bedford County, VA | merge city with surrounding county | 
+| 51520 | Bristol City, VA | 51191 | Washington County, VA | merge city with surrounding county | 
+| 51530 | Buena Vista City, VA | 51163 | Rockbridge County, VA | merge city with surrounding county | 
+| 51540 | Charlottesville City, VA | 51003 | Albemarle County, VA | merge city with surrounding county | 
+| 51550 | Chesapeake City, VA | 51710 | Norfolk City, VA | combine Chesapeake, Portsmouth, and Norfolk into Norfolk | 
+| 51560 | Clifton Forge City, VA | 51005 | Alleghany County, VA | merge city with surrounding county | 
+| 51570 | Colonial Heights City, VA | 51053 | Dinwiddie County, VA | merge city with surrounding county | 
+| 51580 | Covington City, VA | 51005 | Alleghany County, VA | merge city with surrounding county | 
+| 51590 | Danville City, VA | 51143 | Pittsylvania County, VA | merge city with surrounding county | 
+| 51595 | Emporia City, VA | 51081 | Greensville County, VA | merge city with surrounding county | 
+| 51600 | Fairfax City, VA | 51059 | Fairfax County, VA | merge city with surrounding county | 
+| 51610 | Falls Church City, VA | 51059 | Fairfax County, VA | merge city with surrounding county | 
+| 51620 | Franklin City, VA | 51175 | Southampton County, VA | merge city with surrounding county | 
+| 51630 | Fredericksburg City, VA | 51177 | Spotsylvania County, VA | merge city with surrounding county | 
+| 51640 | Galax City, VA | 51035 | Carroll County, VA | merge city with surrounding county | 
+| 51650 | Hampton City, VA | 51199 | York County, VA | merge Hampton, Poquoson, and Newport News into York County, VA | 
+| 51660 | Harrisonburg City, VA | 51165 | Rockingham County, VA | merge city with surrounding county | 
+| 51670 | Hopewell City, VA | 51149 | Prince George County, VA | merge city with surrounding county | 
+| 51678 | Lexington City, VA | 51163 | Rockbridge County, VA | merge city with surrounding county | 
+| 51680 | Lynchburg City, VA | 51031 | Campbell County, VA | merge city with neighboring county | 
+| 51683 | Manassas City, VA | 51153 | Prince William County, VA | merge city with surrounding county | 
+| 51685 | Manassas Park City, VA | 51153 | Prince William County, VA | merge city with surrounding county | 
+| 51690 | Martinsville City, VA | 51089 | Henry County, VA | merge city with surrounding county | 
+| 51700 | Newport News City, VA | 51199 | York County, VA | merge Hampton, Poquoson, and Newport News into York County, VA | 
+| 51720 | Norton City, VA | 51195 | Wise County, VA | merge city with surrounding county | 
+| 51730 | Petersburg City, VA | 51053 | Dinwiddie County, VA | merge city with neighboring county | 
+| 51735 | Poquoson City, VA | 51199 | York County, VA | merge Hampton, Poquoson, and Newport News into York County, VA | 
+| 51740 | Portsmouth City, VA | 51710 | Norfolk City, VA | combine Chesapeake, Portsmouth, and Norfolk into Norfolk | 
+| 51750 | Radford City, VA | 51121 | Montgomery County, VA | merge city with neighboring county | 
+| 51760 | Richmond City, VA | 51087 | Henrico County, VA | merge city with neighboring county | 
+| 51770 | Roanoke City, VA | 51161 | Roanoke County, VA | merge city with surrounding county | 
+| 51775 | Salem City, VA | 51161 | Roanoke County, VA | merge city with surrounding county | 
+| 51780 | South Boston City, VA | 51083 | Halifax County, VA | merge city with surrounding county | 
+| 51790 | Staunton City, VA | 51015 | Augusta County, VA | merge city with surrounding county | 
+| 51820 | Waynesboro City, VA | 51015 | Augusta County, VA | merge city with surrounding county | 
+| 51830 | Williamsburg City, VA | 51095 | James City County, VA | merge city with neighboring county | 
+| 51840 | Winchester City, VA | 51069 | Frederick County, VA | merge city with surrounding county | 
+| 55078 | Menominee County, WI | 55115 | Shawano County, WI | merge county with neighboring county | 
 
-| FIPS | County | # of Years Observed | Issue |
-| :---: | :---: | :---: | :---: |
-| 08014 | Broomfield, CO | 8 | Data not available before 2002 |
-| 12025 | Dade, FL | 7 | Data unavailable after 1989 |
-| 12086 | Miami-Dade, FL | 20 | Data not available before 1990 |
-| 31115 | Loup, NE | 16 | Data unavailable for 1990 to 2000 |
-| 31117 | McPherson, NE | 16 | Data unavailable for 1990 to 2000 |
-| 48033 | Borden, TX | 16 | Data unavailable for 1990 to 2000 |
-| 48301 | Loving, TX | 16 | Data unavailable for 1990 to 2000 |
-| 51560 | Clifton Forge, VA	 | 8 | Data unavailable after 1989 (except 2001) |
-| 51780 | South Boston, VA | 7 | Data unavailable after 1989 |
+
+
