@@ -60,14 +60,14 @@ Much better to my eye!
 ## List of all changes for FIPS crosswalk
 | Original FIPS | County | New FIPS | County | Desc |
 | :---: | :---: | :---: | :---: | :---: |
-| 08001 | Adams County, CO | 08031 | Denver County, CO |  | 
-| 08013 | Boulder County, CO | 08031 | Denver County, CO |  | 
-| 08014 | Broomfield County, CO | 08031 | Denver County, CO |  | 
-| 08059 | Jefferson County, CO | 08031 | Denver County, CO |  | 
-| 08123 | Weld County, CO | 08031 | Denver County, CO |  | 
+| 08001 | Adams County, CO | 08031 | Denver County, CO | make one mega-"Denver" because of annexation and formation of new county | 
+| 08013 | Boulder County, CO | 08031 | Denver County, CO | make one mega-"Denver" because of annexation and formation of new county | 
+| 08014 | Broomfield County, CO | 08031 | Denver County, CO | make one mega-"Denver" because of annexation and formation of new county | 
+| 08059 | Jefferson County, CO | 08031 | Denver County, CO | make one mega-"Denver" because of annexation and formation of new county | 
+| 08123 | Weld County, CO | 08031 | Denver County, CO | make one mega-"Denver" because of annexation and formation of new county | 
 | 12025 | Dade County, FL | 12086 | Miami-Dade County, FL | name change | 
 | 24510 | Baltimore City, MD | 24005 | Baltimore County, MD | merge city with surrounding county | 
-| 29510 | St Louis City, MO | 29189 | St Louis County, MO |  | 
+| 29510 | St Louis City, MO | 29189 | St Louis County, MO | merge city with surrounding county | 
 | 31115 | Loup County, NE | 31071 | Garfield County, NE | combine county that is too small for wage/emp. data (pop. of 632 in 2010 Census) with neighboring county | 
 | 31117 | McPherson County, NE | 31113 | Logan County,NE | combine county that is too small for wage/emp. data (pop. of 539 in 2010 Census) with neighboring county | 
 | 48033 | Borden County, TX | 48415 | Scurry County, TX | combine county that is too small for wage/emp. data (pop. of 641 in 2010 Census) with neighboring county | 
