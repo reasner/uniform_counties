@@ -138,7 +138,6 @@ fips_df.loc[fips_df['fips'] == '51683','new_fips'] = '51153'
 fips_df.loc[fips_df['fips'] == '51685','new_fips'] = '51153'
 fips_df.loc[fips_df['fips'] == '51690','new_fips'] = '51089'
 fips_df.loc[fips_df['fips'] == '51700','new_fips'] = '51199'
-fips_df.loc[fips_df['fips'] == '51710','new_fips'] = '51710'
 fips_df.loc[fips_df['fips'] == '51720','new_fips'] = '51195'
 fips_df.loc[fips_df['fips'] == '51730','new_fips'] = '51053'
 fips_df.loc[fips_df['fips'] == '51735','new_fips'] = '51199'
@@ -154,9 +153,41 @@ fips_df.loc[fips_df['fips'] == '51840','new_fips'] = '51069'
 ### cities split from surrounding county
 fips_df.loc[fips_df['fips'] == '24510','new_fips'] = '24005'
 fips_df.loc[fips_df['fips'] == '29510','new_fips'] = '29189'
+### fill in mapping for observations that do not appear every year
+fips_map_to_add_year = []
+fips_map_to_add_fips = []
+fips_map_to_add_new_fips = []
+for year in range(1989,2010):
+    if year == 1989:
+        fips_map_to_add_fips.append('08014')
+        fips_map_to_add_new_fips.append('08031')
+        fips_map_to_add_year.append(str(year))
+    elif year >= 1989 and year <= 2001:
+        fips_to_add = ['08014','31115','31117','48033','48301']
+        new_fips_to_add = ['08031','31071','31113','48415','48389']
+        years_to_add = [str(year)]*5
+        fips_map_to_add_fips.extend(fips_to_add)
+        fips_map_to_add_new_fips.extend(new_fips_to_add)
+        fips_map_to_add_year.extend(years_to_add)
+    elif year == 2001:
+        fips_map_to_add_fips.append('51780')
+        fips_map_to_add_new_fips.append('51083')
+        fips_map_to_add_year.append(str(year))
+    elif year >= 2001:
+        fips_to_add = ['51780','51560']
+        new_fips_to_add = ['51083','51005']
+        years_to_add = [str(year)]*2
+        fips_map_to_add_fips.extend(fips_to_add)
+        fips_map_to_add_new_fips.extend(new_fips_to_add)
+        fips_map_to_add_year.extend(years_to_add)
+fips_map_to_add = [fips_map_to_add_year,fips_map_to_add_fips,fips_map_to_add_new_fips]
+fip_map_to_add_df = pd.DataFrame({'year':fips_map_to_add_year,'fips':fips_map_to_add_fips,'new_fips':fips_map_to_add_new_fips})
+fips_df = fips_df.append(fip_map_to_add_df)
+fips_df.sort_values(by=['year', 'fips'])   
 ### save mapping (3,061 counties in final crosswalk)
 fips_crosswalk_path = os.path.join(cd,r'uniform_counties',r'fips_crosswalk.csv')
 fips_df.to_csv(fips_crosswalk_path,index=False)
+
 
 # APPLY TO DATA (MAKE PANEL)
 new_fips_df = pd.merge(df,fips_df,on=['year','fips'],how='outer',indicator=True)
@@ -208,4 +239,3 @@ filled_in_map_df.plot(ax=ax, column='avg_size_estabs', legend=True, legend_kwds=
 plt.title('Average Establishment Size (2000)')
 better_plot_path = os.path.join(cd,r'uniform_counties','better_plot.png')
 plt.savefig(better_plot_path,bbox_inches='tight',dpi=300)
-
