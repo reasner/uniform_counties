@@ -162,7 +162,7 @@ for year in range(1989,2010):
         fips_map_to_add_fips.append('08014')
         fips_map_to_add_new_fips.append('08031')
         fips_map_to_add_year.append(str(year))
-    elif year >= 1989 and year <= 2001:
+    elif year >= 1989 and year < 2001:
         fips_to_add = ['08014','31115','31117','48033','48301']
         new_fips_to_add = ['08031','31071','31113','48415','48389']
         years_to_add = [str(year)]*5
@@ -170,9 +170,12 @@ for year in range(1989,2010):
         fips_map_to_add_new_fips.extend(new_fips_to_add)
         fips_map_to_add_year.extend(years_to_add)
     elif year == 2001:
-        fips_map_to_add_fips.append('51780')
-        fips_map_to_add_new_fips.append('51083')
-        fips_map_to_add_year.append(str(year))
+        fips_to_add = ['08014','51780']
+        new_fips_to_add = ['08031','51083']
+        years_to_add = [str(year)]*2
+        fips_map_to_add_fips.extend(fips_to_add)
+        fips_map_to_add_new_fips.extend(new_fips_to_add)
+        fips_map_to_add_year.extend(years_to_add)
     elif year >= 2001:
         fips_to_add = ['51780','51560']
         new_fips_to_add = ['51083','51005']
